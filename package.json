@@ -1,7 +1,7 @@
 {
   "name": "jwt-express-forgot-password",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Express server app using MongoDB and JWT for authentication/authorisation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
