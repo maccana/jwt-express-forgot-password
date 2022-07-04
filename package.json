@@ -2,9 +2,10 @@
   "name": "jwt-express-forgot-password",
   "version": "1.0.0",
   "description": "An Express server app using MongoDB and JWT for authentication/authorisation",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
