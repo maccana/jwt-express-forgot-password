@@ -6,4 +6,8 @@ router.get('/register', async (req, res) => {
     res.send('Register form')
 });
 
+router.get('/login', (req, res) => {
+    res.render('login.ejs')
+})
+
 module.exports = router;
