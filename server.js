@@ -2,11 +2,14 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const auth = require('./routes/authentication');
 config = require('./config/DB');
 const port = 3010;
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(express.json());
+app.use(bodyParser.json())
 
 mongoose.connect(config.DB).then(
     () => {

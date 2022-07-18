@@ -9,20 +9,24 @@ router.get('/register', async (req, res) => {
     res.send('Register form')
 });
 
-
 router.get('/login', (req, res) => {
     res.render('login.ejs')
 })
 
 router.post('/login', async (req, res) => {
-    console.log('USER: ', User)
-
     // Existing email check
+    console.log('USER: ', req.body)
+
     const existingUsername = await User.findOne({
-        name: req.body.name
+        email: req.body.email
     });
-    if (existingUsername) return res.status(400).send('Username is taken.');
-    res.render('dash.ejs')
+    console.log('USER: ', existingUsername)
+
+    if (existingUsername) {
+        return res.status(400).send('Username is taken.');
+    } else {
+        res.render('dash.ejs')
+    }
 })
 
 module.exports = router;
