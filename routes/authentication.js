@@ -10,6 +10,19 @@ router.get('/register', async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
+    const existingUsername = await User.findOne({
+        email: req.body.email
+    });
+    console.log('USER2: ', existingUsername)
+
+    if (existingUsername) {
+        return res.status(400).send('Username is taken.');
+    } else {
+        // res.render('login.ejs')
+        res.render('login.ejs', {
+            msg: 'Please login',
+        });
+    }
     res.send('Post registration form route')
 })
 
