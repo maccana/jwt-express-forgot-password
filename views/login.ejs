@@ -9,7 +9,7 @@
 <body>
     <h1>Login</h1>
     <% if(typeof msg !== 'undefined'){ %>
-        <p><%- msg %></p>   
+        <p class="loginMsg"><%- msg %> - <%- status %></p>   
     <% } %>
     <form action="/api/login" method="POST">
         <label for="email">Email/Username</label>
@@ -22,3 +22,12 @@
     </form>
 </body>
 </html>
+<style>
+    .loginMsg {
+        background: #179617;
+        color: white;
+        padding: 10px;
+        max-width: 300px;
+        font-family: sans-serif;
+    }
+</style>
