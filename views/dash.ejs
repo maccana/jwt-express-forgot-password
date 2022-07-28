@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASH</title>
+</head>
+<body>
+    <h1>DASH</h1>
+    <% if(typeof msg !== 'undefined'){ %>
+        <p><%- msg %> <%- user.username  %> </p>   
+    <% } %>
+
+    <input type="submit" onClick="logout()" value="Sign Out"/> 
+    <script>
+      function logout() {
+        window.location.href="http://localhost:3010/api/login";  
+      }
+    </script>
+</body>
+</html>
