@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Login</h1>
-    <% if(typeof msg !== 'undefined'){ %>
-        <p class="loginMsg"><%- msg %> - <%- status %></p>   
+    <% if(msg && typeof msg !== 'undefined'){ %>
+        <p class="loginMsg"><%- msg %></p>   
     <% } %>
     <form action="/api/login" method="POST">
         <label for="email">Email/Username</label>

@@ -22,11 +22,20 @@ router.post('/register', async (req, res) => {
     if (existingUser) {
         return res.status(400).send('Username is taken.');
     } else {
-        postRegistrationLoginMsg = 'You have registered. Please login.'
-        registerSuccess = true
-        res.redirect('/api/login');
+        let newUser = new User()
+        console.log('User -> ', req.body)
+        newUser.username = req.body.email
+        newUser.password = req.body.password
+
+        console.log('U -> ', newUser)
+
+        newUser.save().then(user => {
+            postRegistrationLoginMsg = 'You have registered. Please login.'
+            registerSuccess = true
+            res.redirect('/api/login');
+        })
     }
-    res.send('Post registration form route')
+    // res.send('Post registration form route')
 })
 
 router.get('/login', (req, res) => {
@@ -40,7 +49,7 @@ router.post('/login', async (req, res) => {
     console.log('USER1: ', req.body)
 
     const existingUser = await User.findOne({
-        email: req.body.email
+        email: req.body.username
     });
     console.log('USER2: ', existingUser)
 
