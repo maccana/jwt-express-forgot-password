@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
     console.log('USER1: ', req.body)
 
     const existingUser = await User.findOne({
-        email: req.body.username
+        username: req.body.email
     });
     console.log('USER2: ', existingUser)
 
