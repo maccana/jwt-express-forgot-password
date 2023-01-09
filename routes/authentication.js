@@ -33,6 +33,11 @@ router.post('/register', async (req, res) => {
     }
 })
 
+
+router.get('/try', (req, res) => {
+    res.send({ ms: 'hello' })
+})
+
 router.get('/login', (req, res) => {
     // TODO: css for msg show/hide depending on success or fail
     res.render('login.ejs', { msg: postRegistrationLoginMsg, status: registerSuccess })
