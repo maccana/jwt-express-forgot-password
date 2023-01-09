@@ -13,8 +13,10 @@ var User = new Schema({
     password: {
         type: String
     }
-}, {
-    collection: 'users'
-});
+},
+    { timestamps: true },
+    {
+        collection: 'users'
+    });
 
 module.exports = mongoose.model('User', User)
