@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 let postRegistrationLoginMsg = ''
 let registerSuccess
 
+// Middleware
+const MW = require("../middleware/middleware.js");
+
 // Register Route
 router.get('/register', async (req, res) => {
     console.log('Getting registration form...')
@@ -33,9 +36,8 @@ router.post('/register', async (req, res) => {
     }
 })
 
-
-router.get('/try', (req, res) => {
-    res.send({ ms: 'hello' })
+router.get('/check-auth', MW.isAuth, MW.otherMiddleware, function (req, res) {
+    res.send({ mes: 'Auth passed' })
 })
 
 router.get('/login', (req, res) => {
