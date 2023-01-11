@@ -15,10 +15,34 @@ router.get('/register', async (req, res) => {
     res.render('register.ejs')
 });
 
+function validateEmail(email) {
+    // A simple regex for checking email format
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(String(email).toLowerCase())
+}
+
 router.post('/register', async (req, res) => {
+
+    if (!req.body.email || !req.body.password) {
+        console.log('hhhh')
+        return res.status(400).json({ error: 'Email and password are required.' })
+    }
+
+    if (!validateEmail(req.body.email)) {
+        return res.status(400).json({ error: 'Invalid email address.' })
+    }
+
+
+    if (req.body.password.length < 8) {
+        return res.status(400).json({ error: 'Password must be at least 8 characters.' })
+    }
+
+
     const existingUser = await User.findOne({
         email: req.body.email
     });
+
+
 
     if (existingUser) {
         return res.status(400).send('Username is taken.');
