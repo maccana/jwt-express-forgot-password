@@ -37,12 +37,9 @@ router.post('/register', async (req, res) => {
         return res.status(400).json({ error: 'Password must be at least 8 characters.' })
     }
 
-
     const existingUser = await User.findOne({
         email: req.body.email
     });
-
-
 
     if (existingUser) {
         return res.status(400).send('Username is taken.');
