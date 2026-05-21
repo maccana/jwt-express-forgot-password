@@ -24,7 +24,7 @@ function validateEmail(email) {
 router.post('/register', async (req, res) => {
 
     if (!req.body.email || !req.body.password) {
-        console.log('hhhh')
+        console.log('Email or password format incorrect')
         return res.status(400).json({ error: 'Email and password are required.' })
     }
 
